@@ -1,0 +1,114 @@
+[
+    {
+        "id": "cddf631ccaf36676",
+        "type": "tab",
+        "label": "Flow 2",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "e5cb8351edbb48f4",
+        "type": "inject",
+        "z": "cddf631ccaf36676",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "5",
+        "topic": "topico de Ejemplo",
+        "payload": "",
+        "payloadType": "date",
+        "x": 250,
+        "y": 200,
+        "wires": [
+            [
+                "54191ff5df1af472"
+            ]
+        ]
+    },
+    {
+        "id": "4ffd8fd115c29a3e",
+        "type": "debug",
+        "z": "cddf631ccaf36676",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 850,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "54191ff5df1af472",
+        "type": "function",
+        "z": "cddf631ccaf36676",
+        "name": "",
+        "func": "// Lo que está después de “//” son comentarios\n// Crea un objeto Date a partir del payload enviado por timestamp\nvar date = new Date(msg.payload);\n// Cambia el payload para que sea una fecha con formato\nmsg.payload = date.toString();\n// Regresa el mensaje para que se envíe al sigueinte nodo\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 200,
+        "wires": [
+            [
+                "4ffd8fd115c29a3e",
+                "565c402558896cde"
+            ]
+        ]
+    },
+    {
+        "id": "565c402558896cde",
+        "type": "ui_text",
+        "z": "cddf631ccaf36676",
+        "group": "c4a1cbe7fc021fd4",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Manejo de DashBoard",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "className": "",
+        "x": 840,
+        "y": 200,
+        "wires": [],
+        "icon": "node-red/arduino.png",
+        "info": "Flow 2 con interfaz grafica"
+    },
+    {
+        "id": "c4a1cbe7fc021fd4",
+        "type": "ui_group",
+        "name": "Fecha en Gráficos Dashboard",
+        "tab": "0f6a1d39a3bd67b7",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": true,
+        "className": ""
+    },
+    {
+        "id": "0f6a1d39a3bd67b7",
+        "type": "ui_tab",
+        "name": "flow2",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
